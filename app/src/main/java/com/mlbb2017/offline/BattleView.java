@@ -102,6 +102,25 @@ class Minion {
         color(canvas, Color.RED);
         canvas.drawCircle(1110, 100, 55, p);
 
+        // TOWERS
+color(canvas, Color.BLUE);
+canvas.drawRect(330, 440, 370, 480, p);
+
+color(canvas, Color.RED);
+canvas.drawRect(830, 220, 870, 260, p);
+
+// TOWER HP
+drawHP(canvas, 350, 430, blueTowerHP / 5, Color.GREEN);
+drawHP(canvas, 850, 210, redTowerHP / 5, Color.GREEN);
+
+// MINIONS
+for (Minion m : minions) {
+    if (m.hp <= 0) continue;
+
+    color(canvas, m.enemy ? Color.YELLOW : Color.CYAN);
+    canvas.drawCircle(m.x, m.y, 12, p);
+}
+        
         // Player
         color(canvas, Color.CYAN);
         canvas.drawCircle(px, py, 24, p);
