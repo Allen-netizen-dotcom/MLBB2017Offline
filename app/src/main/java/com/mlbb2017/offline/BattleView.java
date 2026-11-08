@@ -180,6 +180,17 @@ class Minion {
 
         px = Math.max(25, Math.min(1175, px));
         py = Math.max(70, Math.min(660, py));
+
+        // MINION SPAWNING
+if (System.currentTimeMillis() - lastSpawn > 5000) {
+
+    for (int i = 0; i < 3; i++) {
+        minions.add(new Minion(120, 570 + i * 15, false));
+        minions.add(new Minion(1080, 130 + i * 15, true));
+    }
+
+    lastSpawn = System.currentTimeMillis();
+}
     }
 
     @Override
