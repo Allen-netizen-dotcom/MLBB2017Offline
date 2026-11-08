@@ -84,6 +84,8 @@ public class MainActivity extends Activity {
     }
 
     void showBattle() {
+    setContentView(new BattleView(this));
+    }
         LinearLayout layout = createLayout();
 
         TextView battle = new TextView(this);
