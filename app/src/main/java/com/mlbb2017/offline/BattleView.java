@@ -151,10 +151,31 @@ for (Minion m : minions) {
         canvas.drawText("HP: " + playerHP, 25, 40, p);
         canvas.drawText("OFFLINE 5V5", 500, 40, p);
 
+        // GAME OVER SCREEN
+if (gameOver) {
+
+    p.setColor(Color.argb(200, 0, 0, 0));
+    canvas.drawRect(0, 0, 1200, 700, p);
+
+    p.setColor(Color.WHITE);
+    p.setTextSize(60);
+    p.setTextAlign(Paint.Align.CENTER);
+
+    canvas.drawText(
+        redBaseHP <= 0 ? "VICTORY!" : "DEFEAT!",
+        600, 330, p
+    );
+
+    p.setTextSize(30);
+    canvas.drawText("MATCH FINISHED", 600, 390, p);
+
+    p.setTextAlign(Paint.Align.LEFT);
+                   }
         canvas.restore();
 
         updateGame();
         postInvalidateDelayed(40);
+        
     }
 
     void drawHP(Canvas c, float x, float y, int hp, int color) {
