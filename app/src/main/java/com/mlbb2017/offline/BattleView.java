@@ -210,6 +210,52 @@ if (System.currentTimeMillis() - lastSpawn > 5000) {
 
     lastSpawn = System.currentTimeMillis();
 }
+        // MINION MOVEMENT AND TOWER DAMAGE
+for (Minion m : minions) {
+
+    if (m.hp <= 0) continue;
+
+    long now = System.currentTimeMillis();
+
+    if (!m.enemy) {
+
+        m.x += 1.2f;
+        m.y -= 0.6f;
+
+        if (m.x >= 350 && blueTowerHP > 0) {
+            if (now - m.lastHit > 700) {
+                blueTowerHP = Math.max(0, blueTowerHP - 5);
+                m.lastHit = now;
+            }
+        } else if (blueTowerHP <= 0 && m.x >= 1100) {
+            if (now - m.lastHit > 700) {
+                redBaseHP = Math.max(0, redBaseHP - 5);
+                m.lastHit = now;
+            }
+        }
+
+    } else {
+
+        m.x -= 1.2f;
+        m.y += 0.6f;
+
+        if (m.x <= 850 && redTowerHP > 0) {
+            if (now - m.lastHit > 700) {
+                redTowerHP = Math.max(0, redTowerHP - 5);
+                m.lastHit = now;
+            }
+        } else if (redTowerHP <= 0 && m.x <= 100) {
+            if (now - m.lastHit > 700) {
+                blueBaseHP = Math.max(0, blueBaseHP - 5);
+                m.lastHit = now;
+            }
+        }
+    }
+}
+
+if (redBaseHP <= 0 || blueBaseHP <= 0) {
+    gameOver = true;
+}
     }
 
     @Override
