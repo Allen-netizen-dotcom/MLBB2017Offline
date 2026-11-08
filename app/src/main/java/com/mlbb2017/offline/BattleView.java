@@ -16,6 +16,30 @@ public class BattleView extends View {
 
     ArrayList<Bot> bots = new ArrayList<>();
 
+// MINION SYSTEM
+ArrayList<Minion> minions = new ArrayList<>();
+
+int blueTowerHP = 500;
+int redTowerHP = 500;
+int blueBaseHP = 1000;
+int redBaseHP = 1000;
+
+long lastSpawn = 0;
+boolean gameOver = false;
+
+class Minion {
+    float x, y;
+    boolean enemy;
+    int hp = 100;
+    long lastHit = 0;
+
+    Minion(float x, float y, boolean enemy) {
+        this.x = x;
+        this.y = y;
+        this.enemy = enemy;
+    }
+}
+
     class Bot {
         float x, y;
         int hp = 100;
